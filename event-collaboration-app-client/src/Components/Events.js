@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Event.css";
+import Users from "./Users";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -26,6 +27,7 @@ const Events = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get("http://localhost:5000/users");
+      console.log("usr", response.data);
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -145,6 +147,7 @@ const Events = () => {
           </li>
         ))}
       </ul>
+      <Users />
     </div>
   );
 };
